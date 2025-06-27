@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   container: {
     display: 'flex',
     flexDirection: 'row',
-    height: '320px',
+    height: '580px',
     padding: '12px',
     justifyContent: 'space-between',
     borderLeft: `10px solid ${theme.palette.primary.main}`,
@@ -79,6 +79,18 @@ const VoucherDetailsPrintTemplate = forwardRef(({ workerVoucher, logo, isAssigne
   );
   const [voucherValue, setVoucherValue] = useState(null);
   const getBillLineItem = useMemo(() => modulesManager.getRef(REF_GET_BILL_LINE_ITEM), [modulesManager]);
+
+  // Function to format time from HH:MM:SS to HH:MM
+  const formatTime = (timeString) => {
+    if (!timeString) return '';
+    // If it's already in HH:MM format, return as is
+    if (timeString.length === 5 && timeString.includes(':')) return timeString;
+    // If it's in HH:MM:SS format, extract HH:MM
+    if (timeString.length === 8 && timeString.includes(':')) {
+      return timeString.substring(0, 5);
+    }
+    return timeString;
+  };
 
   useEffect(() => {
     const fetchVoucherValue = async () => {
@@ -148,7 +160,88 @@ const VoucherDetailsPrintTemplate = forwardRef(({ workerVoucher, logo, isAssigne
             <Divider />
             <p className={classes.annotation}>{formatMessage('workerVoucher.template.dateOfAssignment')}</p>
           </div>
+
+          {/* New fields section - arranged in two columns */}
+          <div style={{ display: 'flex', gap: '16px', marginTop: '8px' }}>
+            <div style={{ flex: 1 }}>
+              <div>
+                <p className={classes.workerInfo}>
+                  {isAssignedStatus && workerVoucher?.startTime ? formatTime(workerVoucher.startTime) : 'precompletat'}
+                </p>
+                <Divider />
+                <p className={classes.annotation}>{formatMessage('workerVoucher.startTime')}</p>
+              </div>
+              <div style={{ marginTop: '8px' }}>
+                <p className={classes.workerInfo}>
+                  {isAssignedStatus && workerVoucher?.workPlace ? workerVoucher.workPlace : 'precompletat'}
+                </p>
+                <Divider />
+                <p className={classes.annotation}>{formatMessage('workerVoucher.template.workPlace')}</p>
+              </div>
+              <div style={{ marginTop: '8px' }}>
+                <p className={classes.workerInfo}>
+                  {isAssignedStatus && workerVoucher?.negotiated ? `${workerVoucher.negotiated} ${formatMessage('currency')}` : 'precompletat'}
+                </p>
+                <Divider />
+                <p className={classes.annotation}>{formatMessage('workerVoucher.template.negotiated')}</p>
+              </div>
+            </div>
+
+            <div style={{ flex: 1 }}>
+              <div>
+                <p className={classes.workerInfo}>
+                  {isAssignedStatus && workerVoucher?.endTime ? formatTime(workerVoucher.endTime) : 'precompletat'}
+                </p>
+                <Divider />
+                <p className={classes.annotation}>{formatMessage('workerVoucher.endTime')}</p>
+              </div>
+              <div style={{ marginTop: '8px' }}>
+                <p className={classes.workerInfo}>
+                  {isAssignedStatus && workerVoucher?.activity ? workerVoucher.activity : 'precompletat'}
+                </p>
+                <Divider />
+                <p className={classes.annotation}>{formatMessage('workerVoucher.template.activity')}</p>
+              </div>
+              <div style={{ marginTop: '8px' }}>
+                <p className={classes.workerInfo}>
+                  {isAssignedStatus && workerVoucher?.paid ? `${workerVoucher.paid} ${formatMessage('currency')}` : 'precompletat'}
+                </p>
+                <Divider />
+                <p className={classes.annotation}>{formatMessage('workerVoucher.template.paid')}</p>
+              </div>
+            </div>
+          </div>
+
           <p className={classes.voucherValue}>{`${voucherValue || 0} ${formatMessage('currency')}`}</p>
+
+          {/* Signature fields section */}
+          <div style={{ display: 'flex', gap: '16px', marginTop: '24px' }}>
+            <div style={{ flex: 1 }}>
+              <div style={{ marginBottom: '40px' }}>
+                <p className={classes.workerInfo}></p>
+                <Divider />
+                <p className={classes.annotation}>{formatMessage('workerVoucher.template.signatureStart')}</p>
+              </div>
+              <div>
+                <p className={classes.workerInfo}></p>
+                <Divider />
+                <p className={classes.annotation}>{formatMessage('workerVoucher.template.signaturePayment')}</p>
+              </div>
+            </div>
+
+            <div style={{ flex: 1 }}>
+              <div style={{ marginBottom: '40px' }}>
+                <p className={classes.workerInfo}></p>
+                <Divider />
+                <p className={classes.annotation}>{formatMessage('workerVoucher.template.signatureEnd')}</p>
+              </div>
+              <div>
+                <p className={classes.workerInfo}></p>
+                <Divider />
+                <p className={classes.annotation}>{formatMessage('workerVoucher.template.stampBeneficiary')}</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
