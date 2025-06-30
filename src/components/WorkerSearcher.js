@@ -69,7 +69,7 @@ function WorkerSearcher({
   const isAdminOrInspector = rights.includes(INSPECTOR_RIGHT) || rights.includes(ADMIN_RIGHT);
   const isAuthorized = rights.includes(RIGHT_WORKER_DELETE)
     && (rights.includes(ADMIN_RIGHT)
-    || !rights.includes(INSPECTOR_RIGHT));
+      || !rights.includes(INSPECTOR_RIGHT));
 
   const { formatMessage, formatMessageWithValues } = useTranslations(MODULE_NAME, modulesManager);
   const { showError, showSuccess } = useToast();
@@ -288,8 +288,7 @@ function WorkerSearcher({
         defaultPageSize={DEFAULT_PAGE_SIZE}
         rowIdentifier={rowIdentifier}
         onDoubleClick={onDoubleClick}
-        exportable={!!workers?.length}
-        exportFetch={downloadWorkers}
+        exportable={false}
         additionalExportFields={isAdminOrInspector ? EMPTY_OBJECT : exportConfiguration.additionalExportFields}
         exportFields={exportConfiguration.exportFields}
         exportFieldsColumns={exportConfiguration.exportFieldsColumns}

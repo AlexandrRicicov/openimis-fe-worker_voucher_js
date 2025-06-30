@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import AddIcon from '@material-ui/icons/Add';
-import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import { makeStyles } from '@material-ui/styles';
-import { Button, Typography } from '@material-ui/core';
 
 import {
   Helmet, historyPush, useHistory, useModulesManager, useTranslations, useToast,
@@ -64,36 +61,9 @@ function WorkersPage() {
         <UploadWorkerModal open={uploadOpen} onClose={onUploadClose} />
         <div className={classes.page}>
           <Helmet title={formatMessage('workerVoucher.menu.workersList')} />
-          <WorkerSearcher enableActionButtons={false} />
-
-          <div className={classes.bottomActions}>
-            {rights.includes(RIGHT_WORKER_UPLOAD) && (
-              <Button
-                variant="contained"
-                color="primary"
-                startIcon={<CloudUploadIcon />}
-                onClick={onUploadOpen}
-                className={classes.actionButton}
-              >
-                <Typography variant="body2">
-                  {formatMessage('workerVoucher.WorkersPage.uploadAction')}
-                </Typography>
-              </Button>
-            )}
-            {rights.includes(RIGHT_WORKER_ADD) && (
-              <Button
-                variant="contained"
-                color="primary"
-                startIcon={<AddIcon />}
-                onClick={onAddRedirect}
-                className={classes.actionButton}
-              >
-                <Typography variant="body2">
-                  {formatMessage('workerVoucher.WorkersPage.addAction')}
-                </Typography>
-              </Button>
-            )}
-          </div>
+          <WorkerSearcher
+            onUploadOpen={onUploadOpen}
+          />
         </div>
       </UploadWorkerProvider>
     )
