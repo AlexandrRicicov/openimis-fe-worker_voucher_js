@@ -4,13 +4,14 @@
 
 import React from 'react';
 
-import GroupAddIcon from '@material-ui/icons/GroupAdd';
+
 import ListAltIcon from '@material-ui/icons/ListAlt';
 import LocalAtmIcon from '@material-ui/icons/LocalAtm';
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import VpnLockIcon from '@material-ui/icons/VpnLock';
 import People from '@material-ui/icons/People';
 import TransferWithinAStationIcon from '@material-ui/icons/TransferWithinAStation';
+import AssessmentIcon from '@material-ui/icons/Assessment';
 
 import { FormattedMessage } from '@openimis/fe-core';
 import {
@@ -47,6 +48,8 @@ import PublicVoucherDetailsPage from './pages/PublicVoucherDetailsPage';
 import DashboardPage from './pages/DashboardPage';
 import MPassLoginButton from './components/MPassLoginButton';
 import PublicGDPRPage from './pages/PublicGDPRPage';
+import ReportPage from './pages/ReportPage';
+
 
 const ROUTE_PUBLIC_WORKER_VOUCHER_PAGE = 'voucher/check';
 const ROUTE_WORKER_VOUCHERS_LIST = 'voucher/vouchers';
@@ -60,6 +63,7 @@ const ROUTE_WORKER_VOUCHER_WORKER = 'voucher/vouchers/workers/worker';
 const ROUTE_GROUP_LIST = 'voucher/groups';
 const ROUTE_GROUP = 'voucher/groups/group';
 const ROUTE_GDPR = 'voucher/gdpr';
+const ROUTE_REPORT = 'voucher/report';
 
 const DEFAULT_CONFIG = {
   translations: [{ key: 'en', messages: messages_en }],
@@ -117,6 +121,13 @@ const DEFAULT_CONFIG = {
       filter: (rights) => [VOUCHER_RIGHT_SEARCH].some((right) => rights.includes(right))
         && ![INSPECTOR_RIGHT, ADMIN_RIGHT].some((right) => rights.includes(right)),
       id: 'worker.voucherAcquirement',
+    },
+    {
+      text: <FormattedMessage module="workerVoucher" id="menu.report" />,
+      icon: <AssessmentIcon />,
+      route: `/${ROUTE_REPORT}`,
+      filter: (rights) => [VOUCHER_RIGHT_SEARCH].some((right) => rights.includes(right)),
+      id: 'worker.report',
     },
   ],
   'admin.voucher.MainMenu': [
@@ -187,6 +198,11 @@ const DEFAULT_CONFIG = {
       path: ROUTE_CHANGE_MOBILE_APP_PASSWORD,
       component: MobileAppPasswordManagement,
       requiredRights: [INSPECTOR_RIGHT, ADMIN_RIGHT],
+    },
+    {
+      path: ROUTE_REPORT,
+      component: ReportPage,
+      requiredRights: [VOUCHER_RIGHT_SEARCH],
     },
   ],
   'profile.MainMenu': [
