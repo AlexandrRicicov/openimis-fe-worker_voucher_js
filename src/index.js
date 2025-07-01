@@ -117,10 +117,10 @@ const DEFAULT_CONFIG = {
     {
       text: <FormattedMessage module="workerVoucher" id="menu.voucherAssignment" />,
       icon: <LocalAtmIcon />,
-      route: `/${ROUTE_WORKER_VOUCHER_ACQUIREMENT}`,
+      route: `/${ROUTE_WORKER_VOUCHER_ASSIGNMENT}`,
       filter: (rights) => [VOUCHER_RIGHT_SEARCH].some((right) => rights.includes(right))
         && ![INSPECTOR_RIGHT, ADMIN_RIGHT].some((right) => rights.includes(right)),
-      id: 'worker.voucherAcquirement',
+      id: 'worker.voucherAssignment',
     },
     {
       text: <FormattedMessage module="workerVoucher" id="menu.report" />,
