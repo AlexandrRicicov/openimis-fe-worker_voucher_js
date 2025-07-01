@@ -39,6 +39,16 @@ function AssignmentVoucherForm({
     }
   }, [edited?.workers]);
 
+  // Send workersData to parent component whenever workerRowsData changes
+  useEffect(() => {
+    if (Object.keys(workerRowsData).length > 0) {
+      onEditedChange({
+        ...edited,
+        workersData: workerRowsData
+      });
+    }
+  }, [workerRowsData]);
+
   const handleWorkerDataChange = (workerId, workerData) => {
     const updatedWorkerRowsData = {
       ...workerRowsData,
@@ -46,14 +56,7 @@ function AssignmentVoucherForm({
     };
 
     setWorkerRowsData(updatedWorkerRowsData);
-
-    // Update the parent component with the new worker rows data
-    setTimeout(() => {
-      onEditedChange({
-        ...edited,
-        workersData: updatedWorkerRowsData
-      });
-    }, 0);
+    // workersData will be automatically sent to parent via useEffect
   };
 
   return (
