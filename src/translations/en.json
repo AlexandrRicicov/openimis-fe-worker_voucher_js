@@ -8,6 +8,7 @@
   "workerVoucher.menu.priceManagement": "Voucher Price Management",
   "workerVoucher.menu.mobileAppPassword": "Mobile App Password",
   "workerVoucher.menu.report": "Register of day laborers' records",
+  "workerVoucher.Shortcuts.report": "Register of day laborers' records",
   "workerVoucher.searcherResultsTitle": "{workerVouchersTotalCount} Vouchers Found",
   "workerVoucher.WorkerSearcher.resultsTitle": "{workersTotalCount} Total Workers",
   "workerVoucher.code": "Code",

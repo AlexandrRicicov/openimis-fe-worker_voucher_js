@@ -21,6 +21,7 @@ export const REF_ROUTE_WORKER_VOUCHER = 'workerVoucher.route.workerVoucher';
 export const REF_ROUTE_WORKER_VOUCHERS = 'workerVoucher.route.workerVouchers';
 export const REF_ROUTE_BILL = 'bill.route.bill';
 export const REF_ROUTE_WORKER_ADD = 'workerVoucher.route.worker';
+export const REF_ROUTE_VOUCHER_REPORT = 'voucher.report';
 export const REF_ROUTE_ASSIGN_VOUCHER = 'workerVoucher.route.assignVoucher';
 export const REF_ROUTE_ACQUIRE_VOUCHER = 'workerVoucher.route.acquireVoucher';
 export const REF_GET_BILL_LINE_ITEM = 'bill.action.fetchBillLineItems';

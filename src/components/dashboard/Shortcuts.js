@@ -5,15 +5,16 @@ import React from 'react';
 
 import { Typography } from '@material-ui/core';
 import GroupAddIcon from '@material-ui/icons/GroupAdd';
-import LocalAtmIcon from '@material-ui/icons/LocalAtm';
 import People from '@material-ui/icons/People';
 import { makeStyles } from '@material-ui/styles';
 
 import { useHistory, useModulesManager, useTranslations } from '@openimis/fe-core';
+
+import AssessmentIcon from '@material-ui/icons/Assessment';
 import {
   MODULE_NAME,
-  REF_ROUTE_ACQUIRE_VOUCHER,
   REF_ROUTE_ASSIGN_VOUCHER,
+  REF_ROUTE_VOUCHER_REPORT,
   REF_ROUTE_WORKER_ADD,
 } from '../../constants';
 
@@ -53,9 +54,9 @@ const SHORTCUT_LIST = [
     icon: People,
   },
   {
-    content: 'workerVoucher.Shortcuts.acquireVoucher',
-    link: REF_ROUTE_ACQUIRE_VOUCHER,
-    icon: LocalAtmIcon,
+    content: 'workerVoucher.Shortcuts.report',
+    link: REF_ROUTE_VOUCHER_REPORT,
+    icon: AssessmentIcon,
   },
   {
     content: 'workerVoucher.Shortcuts.assignVoucher',
