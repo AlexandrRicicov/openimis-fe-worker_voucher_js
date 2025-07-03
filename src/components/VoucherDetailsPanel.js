@@ -127,7 +127,7 @@ function VoucherDetailsPanel(props) {
                   variant="contained"
                   color="primary"
                   startIcon={<PrintIcon />}
-                  disabled={!workerVoucher.billId || isTheVoucherExpired(workerVoucher)}
+                  // disabled={!workerVoucher.billId || isTheVoucherExpired(workerVoucher)}
                   onClick={(e) => {
                     e.preventDefault();
 
