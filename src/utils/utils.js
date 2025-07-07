@@ -72,7 +72,40 @@ export const getLastMutationLog = async (dispatch, mutationId) => {
 };
 
 export const isTheVoucherExpired = (voucher) => voucher.status === WORKER_VOUCHER_STATUS.EXPIRED
-|| new Date(voucher.expiryDate) < new Date();
+  || new Date(voucher.expiryDate) < new Date();
+
+// Check if voucher can be canceled (before 9:00 AM on assignedDate)
+export const canCancelVoucher = (voucher) => {
+  if (!voucher?.assignedDate) return false;
+
+  const now = new Date();
+  const assignedDate = new Date(voucher.assignedDate);
+
+  // Create cutoff time at 9:00 AM on the assigned date in local timezone
+  const cutoffTime = new Date(assignedDate);
+  cutoffTime.setHours(9, 0, 0, 0);
+
+  // Can cancel only before 9:00 AM on the assigned date
+  return now < cutoffTime;
+};
+
+// Check if voucher can be printed (from 9:00 AM on assignedDate until end of that month)
+export const canPrintVoucher = (voucher) => {
+  if (!voucher?.assignedDate) return false;
+
+  const now = new Date();
+  const assignedDate = new Date(voucher.assignedDate);
+
+  // Create start time at 9:00 AM on the assigned date
+  const startTime = new Date(assignedDate);
+  startTime.setHours(9, 0, 0, 0);
+
+  // Create end time at the end of the month of assignedDate
+  const endTime = new Date(assignedDate.getFullYear(), assignedDate.getMonth() + 1, 0, 23, 59, 59, 999);
+
+  // Can print from 9:00 AM on assigned date until end of that month
+  return now >= startTime && now <= endTime;
+};
 
 export const trimDate = (date) => {
   if (!date) return EMPTY_STRING;

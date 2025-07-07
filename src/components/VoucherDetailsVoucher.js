@@ -52,7 +52,7 @@ function VoucherDetailsVoucher({
               format="YYYY-MM-DD HH:mm:ss"
             />
           </Grid>
-          <Grid item xs={4} className={classes.item}>
+          {/* <Grid item xs={4} className={classes.item}>
             <PublishedComponent
               pubRef="core.DatePicker"
               module="workerVoucher"
@@ -70,7 +70,7 @@ function VoucherDetailsVoucher({
               value={trimDate(workerVoucher?.expiryDate)}
               readOnly
             />
-          </Grid>
+          </Grid> */}
           <Grid item xs={3} className={classes.item}>
             <TextInput
               type="time"

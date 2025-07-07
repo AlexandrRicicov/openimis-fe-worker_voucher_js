@@ -97,7 +97,6 @@ function VoucherSearcher({ downloadWorkerVoucher, fetchWorkerVouchers, clearWork
     'workerVoucher.status',
     'workerVoucher.assignedDate',
     'workerVoucher.dateOfAssignment',
-    'workerVoucher.expiryDate',
     'emptyLabel',
   ];
 
@@ -108,7 +107,6 @@ function VoucherSearcher({ downloadWorkerVoucher, fetchWorkerVouchers, clearWork
     ['status', true],
     ['assignedDate', true],
     ['dateOfAssignment', true],
-    ['expiryDate', true],
   ];
 
   const rowIdentifier = (workerVoucher) => workerVoucher.uuid;
@@ -127,7 +125,6 @@ function VoucherSearcher({ downloadWorkerVoucher, fetchWorkerVouchers, clearWork
     (workerVoucher) => formatMessage(`workerVoucher.status.${workerVoucher.status}`),
     (workerVoucher) => trimDate(workerVoucher.assignedDate),
     (workerVoucher) => formatDateTimeFromISO(workerVoucher.dateOfAssignment),
-    (workerVoucher) => trimDate(workerVoucher.expiryDate),
     (workerVoucher) => (
       <div style={{ textAlign: 'right' }}>
         <Tooltip title={formatMessage('workerVoucher.tooltip.details')}>

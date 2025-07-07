@@ -18,7 +18,7 @@ import { changeGenericVoucherStatusAfterPrint, fetchWorkerVoucher, cancelVoucher
 import {
   PRINTABLE, CANCELABLE, REF_ROUTE_BILL, VOUCHER_RIGHT_SEARCH, WORKER_VOUCHER_STATUS,
 } from '../constants';
-import { isTheVoucherExpired } from '../utils/utils';
+import { canCancelVoucher, canPrintVoucher } from '../utils/utils';
 import VoucherDetailsEmployer from './VoucherDetailsEmployer';
 import VoucherDetailsPrintTemplate from './VoucherDetailsPrintTemplate';
 import VoucherDetailsVoucher from './VoucherDetailsVoucher';
@@ -110,7 +110,7 @@ function VoucherDetailsPanel(props) {
               >
                 <Typography variant="body2">{formatMessage('workerVoucher.saveVoucher')}</Typography>
               </Button>
-              {CANCELABLE.includes(workerVoucher.status) && (
+              {CANCELABLE.includes(workerVoucher.status) && canCancelVoucher(workerVoucher) && (
                 <Button
                   size="small"
                   variant="contained"
@@ -121,7 +121,7 @@ function VoucherDetailsPanel(props) {
                   <Typography variant="body2">{formatMessage('workerVoucher.navigateToTheBill.cancelVoucher')}</Typography>
                 </Button>
               )}
-              {PRINTABLE.includes(workerVoucher.status) && (
+              {PRINTABLE.includes(workerVoucher.status) && canPrintVoucher(workerVoucher) && (
                 <Button
                   size="small"
                   variant="contained"

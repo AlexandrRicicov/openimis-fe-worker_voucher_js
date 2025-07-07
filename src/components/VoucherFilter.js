@@ -110,7 +110,7 @@ function VoucherFilter({ filters, onChangeFilters, formatMessage }) {
           ])}
         />
       </Grid>
-      <Grid item xs={3} className={classes.item}>
+      {/* <Grid item xs={3} className={classes.item}>
         <PublishedComponent
           pubRef="core.DatePicker"
           module="workerVoucher"
@@ -124,7 +124,7 @@ function VoucherFilter({ filters, onChangeFilters, formatMessage }) {
             },
           ])}
         />
-      </Grid>
+      </Grid> */}
       <Grid item xs={3} className={classes.item}>
         <TextInput
           module="workerVoucher"

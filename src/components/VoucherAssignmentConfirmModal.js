@@ -67,7 +67,7 @@ function VoucherAssignmentConfirmModal({
             readOnly={readOnly}
           />
         </Grid>
-        <Grid item xs={4} className={classes.item}>
+        {/* <Grid item xs={4} className={classes.item}>
           <AmountInput
             module="workerVoucher"
             label="workerVoucher.pricePerVoucher"
@@ -84,7 +84,7 @@ function VoucherAssignmentConfirmModal({
             readOnly={readOnly}
             displayZero
           />
-        </Grid>
+        </Grid> */}
         <FormControlLabel
           style={{ margin: '12px 0 0 0' }}
           control={(
