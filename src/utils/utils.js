@@ -96,12 +96,12 @@ export const canPrintVoucher = (voucher) => {
   const now = new Date();
   const assignedDate = new Date(voucher.assignedDate);
 
-  // Create start time at 9:00 AM on the assigned date
-  const startTime = new Date(assignedDate);
-  startTime.setHours(9, 0, 0, 0);
+  // Create start time at 9:00 AM on the assigned date in local timezone
+  const startTime = new Date(assignedDate.getFullYear(), assignedDate.getMonth(), assignedDate.getDate(), 9, 0, 0, 0);
 
-  // Create end time at the end of the month of assignedDate
-  const endTime = new Date(assignedDate.getFullYear(), assignedDate.getMonth() + 1, 0, 23, 59, 59, 999);
+  // Create end time at the end of the current month
+  const endTime = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59, 999);
+
 
   // Can print from 9:00 AM on assigned date until end of that month
   return now >= startTime && now <= endTime;
