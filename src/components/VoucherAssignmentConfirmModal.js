@@ -45,15 +45,24 @@ function VoucherAssignmentConfirmModal({
   const renderContent = () => {
     if (assignmentSummary?.errors) {
       return (
-        <Typography color="error">
-          {assignmentSummary.errors
-            .map(
-              ({ message, extensions }, index) =>
-                // eslint-disable-next-line implicit-arrow-linebreak
-                `${index + 1}. ${formatValidationError(message, extensions, formatMessage, formatMessageWithValues)}`,
-            )
-            .join('\n')}
-        </Typography>
+        <div>
+          {assignmentSummary.errors.map(({ message, extensions }, index) => (
+            <div key={index} style={{ marginBottom: '16px' }}>
+              <Typography color="error">
+                {`${index + 1}. ${formatValidationError(message, extensions, formatMessage, formatMessageWithValues)}`}
+              </Typography>
+              {extensions?.existing_vouchers && (
+                <div style={{ marginTop: '8px', marginLeft: '16px' }}>
+                  {extensions.existing_vouchers.map((voucher, voucherIndex) => (
+                    <Typography key={voucherIndex} variant="body2" color="textSecondary" style={{ marginTop: '4px' }}>
+                      • {voucher}
+                    </Typography>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
       );
     }
 

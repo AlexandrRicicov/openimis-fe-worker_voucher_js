@@ -30,6 +30,7 @@
   "workerVoucher.group.edit": "Edit Group",
   "workerVoucher.workers": "Workers",
   "workerVoucher.worker.chfId": "IDNP",
+  "workerVoucher.worker.regularIdHeader": "Worker id - {regularId}",
   "workerVoucher.worker.assignedVouchers": "Vouchers This Year",
   "workerVoucher.worker.warning.limit": "WARNING",
   "workerVoucher.worker.warning.limitReached": "The worker has reached the maximum number of vouchers assigned for this calendar year, which is {limit}.",

@@ -59,6 +59,7 @@ const WORKER_PROJECTION = (modulesManager) => [
   'marital',
   'status',
   'jsonExt',
+  'regularId',
   'photo { photo }',
 ];
 

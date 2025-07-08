@@ -130,6 +130,12 @@ const VoucherDetailsPrintTemplate = forwardRef(({ workerVoucher, logo, isAssigne
               employer: extractEmployerName(workerVoucher.policyholder),
             })}
           </p>
+          {workerVoucher?.insuree?.regularId && (
+            <p className={classes.voucherDetail} style={{ marginBottom: '16px' }}>
+              Lucrător id:
+              {workerVoucher.insuree.regularId}
+            </p>
+          )}
         </div>
 
         <div
@@ -166,21 +172,21 @@ const VoucherDetailsPrintTemplate = forwardRef(({ workerVoucher, logo, isAssigne
             <div style={{ flex: 1 }}>
               <div>
                 <p className={classes.workerInfo}>
-                  {isAssignedStatus && workerVoucher?.startTime ? formatTime(workerVoucher.startTime) : 'precompletat'}
+                  {isAssignedStatus && workerVoucher?.startTime ? formatTime(workerVoucher.startTime) : 'n/a'}
                 </p>
                 <Divider />
                 <p className={classes.annotation}>{formatMessage('workerVoucher.startTime')}</p>
               </div>
               <div style={{ marginTop: '8px' }}>
                 <p className={classes.workerInfo}>
-                  {isAssignedStatus && workerVoucher?.workPlace ? workerVoucher.workPlace : 'precompletat'}
+                  {isAssignedStatus && workerVoucher?.workPlace ? workerVoucher.workPlace : 'n/a'}
                 </p>
                 <Divider />
                 <p className={classes.annotation}>{formatMessage('workerVoucher.template.workPlace')}</p>
               </div>
               <div style={{ marginTop: '8px' }}>
                 <p className={classes.workerInfo}>
-                  {isAssignedStatus && workerVoucher?.negotiated ? `${workerVoucher.negotiated} ${formatMessage('currency')}` : 'precompletat'}
+                  {isAssignedStatus && workerVoucher?.negotiated ? `${workerVoucher.negotiated} ${formatMessage('currency')}` : 'n/a'}
                 </p>
                 <Divider />
                 <p className={classes.annotation}>{formatMessage('workerVoucher.template.negotiated')}</p>
@@ -190,21 +196,21 @@ const VoucherDetailsPrintTemplate = forwardRef(({ workerVoucher, logo, isAssigne
             <div style={{ flex: 1 }}>
               <div>
                 <p className={classes.workerInfo}>
-                  {isAssignedStatus && workerVoucher?.endTime ? formatTime(workerVoucher.endTime) : 'precompletat'}
+                  {isAssignedStatus && workerVoucher?.endTime ? formatTime(workerVoucher.endTime) : 'n/a'}
                 </p>
                 <Divider />
                 <p className={classes.annotation}>{formatMessage('workerVoucher.endTime')}</p>
               </div>
               <div style={{ marginTop: '8px' }}>
                 <p className={classes.workerInfo}>
-                  {isAssignedStatus && workerVoucher?.activity ? workerVoucher.activity : 'precompletat'}
+                  {isAssignedStatus && workerVoucher?.activity ? workerVoucher.activity : 'n/a'}
                 </p>
                 <Divider />
                 <p className={classes.annotation}>{formatMessage('workerVoucher.template.activity')}</p>
               </div>
               <div style={{ marginTop: '8px' }}>
                 <p className={classes.workerInfo}>
-                  {isAssignedStatus && workerVoucher?.paid ? `${workerVoucher.paid} ${formatMessage('currency')}` : 'precompletat'}
+                  {isAssignedStatus && workerVoucher?.paid ? `${workerVoucher.paid} ${formatMessage('currency')}` : 'n/a'}
                 </p>
                 <Divider />
                 <p className={classes.annotation}>{formatMessage('workerVoucher.template.paid')}</p>
